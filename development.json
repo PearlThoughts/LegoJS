@@ -1,0 +1,16 @@
+{
+	"apps" : [{
+		"name": "Slack",
+		"script": "bin/www",
+		"ignore_watch" : ["node_modules"],
+		"watch": "./",
+		"watch_options": {
+		    "followSymlinks": false,
+		    "usePolling": true
+		},
+		"env": {
+	        "NODE_ENV": "development",
+	        "PORT": 3009
+	    }
+	}]
+}
