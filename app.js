@@ -43,9 +43,8 @@ class ExpressApp {
 
   initMiddlewares() {
     this.express.use(logger(':date[iso] ":method :url HTTP/:http-version" :status :response-time ms ":referrer" ":user-agent"'));
-    this.express.use(cookieParser());
     this.express.use(express.json());
-    app.use(express.urlencoded());
+    this.express.use(express.urlencoded({extended: false}));
   }
 
   registerRouters() {
