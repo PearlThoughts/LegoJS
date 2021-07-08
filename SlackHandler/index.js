@@ -1,6 +1,7 @@
 const { eventMap } = require('./EventMap');
+const { commandMap } = require('./CommandMap');
 
-class EventHanlder {
+class SlackHandler {
     constructor(slackApp) {
         this.slackApp = slackApp;
     }
@@ -10,6 +11,12 @@ class EventHanlder {
             this.slackApp.event(event, eventMap[event]);
         });
     }
+
+    registerCommands() {
+        Object.keys(commandMap).forEach(command => {
+            this.slackApp.command(command, commandMap[command]);
+        });
+    }
 }
 
-module.exports = EventHanlder;
+module.exports = SlackHandler;
