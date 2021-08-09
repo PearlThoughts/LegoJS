@@ -6,8 +6,9 @@ const logger = require('morgan');
 const { App, ExpressReceiver } = require('@slack/bolt');
 const mongoose = require('mongoose');
 
-const { HelloWorldRouter } = require('./Routes');
+const { WorkspaceRouter } = require('./Routes');
 const SlackHandler = require('./SlackHandler');
+const { WorkspaceService } = require('./Services');
 
 class ExpressApp {
 
@@ -15,6 +16,7 @@ class ExpressApp {
     const env = dotenv.config();
     dotenvExpand(env);
     this.express = express();
+    this.service = new WorkspaceService();
   }
 
   init() {
@@ -27,7 +29,7 @@ class ExpressApp {
 
   initDB() {
     const connectionUrl = `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOST}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_NAME}`;
-    mongoose.connect(connectionUrl, {useNewUrlParser: true, authSource: "admin", useUnifiedTopology: true});
+    mongoose.connect(connectionUrl, { useNewUrlParser: true, authSource: "admin", useUnifiedTopology: true });
   }
 
   initSlackReceivers() {
@@ -35,7 +37,13 @@ class ExpressApp {
     const boltApp = new App({
       token: process.env.SLACK_BOT_TOKEN,
       signingSecret: process.env.SLACK_SIGNING_SECRET,
-      receiver
+      authorize: async ({ teamId, enterpriseId }) => {
+        const team = await this.service.getTeam(teamId);
+        return {
+          botToken: team.accessToken,
+        };
+      },
+      receiver,
     });
 
     const slackHandler = new SlackHandler(boltApp);
@@ -51,7 +59,7 @@ class ExpressApp {
   }
 
   registerRouters() {
-    new HelloWorldRouter(this.express);
+    new WorkspaceRouter(this.express);
   }
 
   initRoutes() {

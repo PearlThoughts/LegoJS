@@ -10,7 +10,7 @@
 		},
 		"env": {
 	        "NODE_ENV": "development",
-	        "PORT": 3009
+	        "PORT": 3000
 	    }
 	}]
 }

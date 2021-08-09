@@ -1,5 +1,5 @@
-const MessageRepository = require('./MessageRespository');
+const WorkspaceRepository = require('./WorkspaceRepository');
 
 module.exports = {
-    MessageRepository
+    WorkspaceRepository
 };

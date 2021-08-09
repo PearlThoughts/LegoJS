@@ -1,5 +1,5 @@
-const HelloWorldService = require('./HelloWorldService');
+const WorkspaceService = require('./WorkspaceService');
 
 module.exports = {
-  HelloWorldService
+  WorkspaceService
 };

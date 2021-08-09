@@ -1,10 +1,10 @@
-const { HelloWorldController } = require('../Controllers');
+const { WorkspaceController } = require('../Controllers');
 const { sampleMiddleware } = require('../Middlewares');
 
-class HelloWorldRouter {
+class WorkspaceRouter {
   constructor(app) {
     this.app = app;
-    this.controller = new HelloWorldController();
+    this.controller = new WorkspaceController();
     this.registerApis();
   }
 
@@ -15,4 +15,4 @@ class HelloWorldRouter {
   }
 }
 
-module.exports = HelloWorldRouter;
+module.exports = WorkspaceRouter;

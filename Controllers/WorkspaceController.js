@@ -1,9 +1,9 @@
-const { HelloWorldService } = require('../Services');
+const { WorkspaceService } = require('../Services');
 
-class HelloWorldController {
+class WorkspaceController {
 
 	constructor() {
-		this.service = new HelloWorldService();
+		this.service = new WorkspaceService();
 	}
 
 	async getMessage(req, res) {
@@ -60,4 +60,4 @@ class HelloWorldController {
 	}
 }
 
-module.exports = HelloWorldController;
+module.exports = WorkspaceController;

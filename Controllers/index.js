@@ -1,5 +1,5 @@
-const HelloWorldController = require('./HelloWorldController');
+const WorkspaceController = require('./WorkspaceController');
 
 module.exports = {
-	HelloWorldController
+	WorkspaceController
 };
