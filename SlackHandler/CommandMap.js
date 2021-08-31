@@ -6,5 +6,5 @@ const commandMap = {
 };
 
 module.exports = {
-    commandMap
+    commandMap,
 };

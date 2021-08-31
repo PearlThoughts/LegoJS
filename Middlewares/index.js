@@ -1,8 +1,7 @@
-
 const sampleMiddleware = (req, res, next) => {
-	next();
+    next();
 };
 
 module.exports = {
-	sampleMiddleware
+    sampleMiddleware,
 };

@@ -7,13 +7,13 @@ class SlackHandler {
     }
 
     registerEvents() {
-        Object.keys(eventMap).forEach(event => {
+        Object.keys(eventMap).forEach((event) => {
             this.slackApp.event(event, eventMap[event]);
         });
     }
 
     registerCommands() {
-        Object.keys(commandMap).forEach(command => {
+        Object.keys(commandMap).forEach((command) => {
             this.slackApp.command(command, commandMap[command]);
         });
     }

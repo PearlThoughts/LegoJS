@@ -1,5 +1,5 @@
-const HelloWorldRouter = require('./HelloWorldRouter');
+const WorkspaceRouter = require('./WorkspaceRouter');
 
 module.exports = {
-  HelloWorldRouter
+    WorkspaceRouter,
 };
